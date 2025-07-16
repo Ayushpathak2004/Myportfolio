@@ -1,0 +1,130 @@
+/* Custom styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111111;
+    color: #EAEAEA;
+    cursor: none; /* Hide the default cursor */
+    overflow-x: hidden;
+    overflow-y: hidden; /* Hide scrollbars during loading */
+}
+
+/* Custom Cursor */
+.cursor {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #EAEAEA;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none; /* Allows clicking through the cursor */
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s, transform 0.1s linear;
+    z-index: 9999;
+}
+
+.cursor.grow {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(234, 234, 234, 0.2);
+    border-color: transparent;
+}
+
+/* Preloader styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+}
+
+.preloader-text {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #EAEAEA;
+}
+
+/* Project image preview */
+.project-image-preview {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.4s, transform 0.4s;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.project-image-preview img {
+    width: 350px;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Main content fade-in */
+.main-content {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Text gradient effect */
+.gradient-text {
+    background: linear-gradient(90deg, #b16cea, #ff5e69, #ff8a56, #ffa84b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Project link hover effect */
+.project-link {
+    transition: transform 0.3s;
+}
+.project-link:hover {
+    transform: translateX(20px);
+}
+.project-link span {
+    transition: color 0.3s;
+}
+.project-link:hover span {
+    color: #b16cea;
+}
+
+/* Nav link hover effect */
+.nav-link > span {
+    position: relative;
+    padding-bottom: 4px;
+}
+.nav-link > span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #b16cea;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.nav-link:hover > span::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Scroll-triggered animations */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

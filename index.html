@@ -8,139 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111111;
-            color: #EAEAEA;
-            cursor: none; /* Hide the default cursor */
-            overflow-x: hidden;
-            overflow-y: hidden; /* Hide scrollbars during loading */
-        }
-
-        /* Custom Cursor */
-        .cursor {
-            width: 30px;
-            height: 30px;
-            border: 2px solid #EAEAEA;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none; /* Allows clicking through the cursor */
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s, transform 0.1s linear;
-            z-index: 9999;
-        }
-
-        .cursor.grow {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(234, 234, 234, 0.2);
-            border-color: transparent;
-        }
-        
-        /* Preloader styles */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #111111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-        }
-
-        .preloader-text {
-            font-size: 5rem;
-            font-weight: 700;
-            color: #EAEAEA;
-        }
-
-        /* Project image preview */
-        .project-image-preview {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.8);
-            transition: opacity 0.4s, transform 0.4s;
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .project-image-preview img {
-            width: 350px;
-            height: auto;
-            object-fit: cover;
-        }
-
-        /* Main content fade-in */
-        .main-content {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        /* Text gradient effect */
-        .gradient-text {
-            background: linear-gradient(90deg, #b16cea, #ff5e69, #ff8a56, #ffa84b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Project link hover effect */
-        .project-link {
-            transition: transform 0.3s;
-        }
-        .project-link:hover {
-            transform: translateX(20px);
-        }
-        .project-link span {
-            transition: color 0.3s;
-        }
-        .project-link:hover span {
-            color: #b16cea;
-        }
-
-        /* Nav link hover effect */
-        .nav-link {
-            position: relative;
-            padding-bottom: 4px;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #b16cea;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        /* Scroll-triggered animations */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased">
 
@@ -159,9 +27,18 @@
             <header class="flex justify-between items-center">
                 <img src="image.jpg" alt="Ayush Pathak" class="w-16 h-16 rounded-full object-cover hover-target transition-transform duration-300 ease-in-out hover:scale-110">
                 <nav class="hidden md:flex items-center space-x-8 text-lg">
-                    <a href="#work" class="hover-target nav-link">Work</a>
-                    <a href="#about" class="hover-target nav-link">About</a>
-                    <a href="#contact" class="hover-target nav-link">Contact</a>
+                    <a href="#about" class="hover-target nav-link flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        <span>About</span>
+                    </a>
+                    <a href="#work" class="hover-target nav-link flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        <span>Work</span>
+                    </a>
+                    <a href="#contact" class="hover-target nav-link flex items-center space-x-2">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>Contact</span>
+                    </a>
                 </nav>
             </header>
 
@@ -178,34 +55,6 @@
                 </div>
             </main>
         </div>
-
-        <!-- Work Section -->
-        <section id="work" class="px-6 md:px-12 py-20 md:py-32 border-t border-gray-800 fade-in-section">
-            <h2 class="text-4xl md:text-5xl font-bold mb-12">Selected Work</h2>
-            <div class="space-y-10 border-t border-gray-800">
-                <!-- Project 1 -->
-                <a href="https://github.com/Ayushpathak2004/RESUMEBUILDER" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/e0e7ff/3730a3?text=AI+Resume+Builder">
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl md:text-5xl font-bold">Resume Builder</span>
-                        <span class="text-gray-500 text-lg">Web Application</span>
-                    </div>
-                </a>
-                <!-- Project 2 -->
-                <a href="https://github.com/Ayushpathak2004/Lostandfound" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/fefce8/854d0e?text=Lost+%26+Found+Hub">
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl md:text-5xl font-bold">Lost and Found</span>
-                        <span class="text-gray-500 text-lg">Web Application</span>
-                    </div>
-                </a>
-                <!-- Project 3 -->
-                <a href="https://github.com/Ayushpathak2004/weatherapp" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/ecfdf5/047857?text=Weather+App">
-                    <div class="flex justify-between items-center">
-                        <span class="text-3xl md:text-5xl font-bold">Weather App</span>
-                        <span class="text-gray-500 text-lg">API Integration</span>
-                    </div>
-                </a>
-            </div>
-        </section>
 
         <!-- About Section -->
         <section id="about" class="px-6 md:px-12 py-20 md:py-32 border-t border-gray-800 fade-in-section">
@@ -257,6 +106,34 @@
             </div>
         </section>
 
+        <!-- Work Section -->
+        <section id="work" class="px-6 md:px-12 py-20 md:py-32 border-t border-gray-800 fade-in-section">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12">Selected Work</h2>
+            <div class="space-y-10 border-t border-gray-800">
+                <!-- Project 1 -->
+                <a href="https://github.com/Ayushpathak2004/RESUMEBUILDER" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/e0e7ff/3730a3?text=AI+Resume+Builder">
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl md:text-5xl font-bold">Resume Builder</span>
+                        <span class="text-gray-500 text-lg">Web Application</span>
+                    </div>
+                </a>
+                <!-- Project 2 -->
+                <a href="https://github.com/Ayushpathak2004/Lostandfound" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/fefce8/854d0e?text=Lost+%26+Found+Hub">
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl md:text-5xl font-bold">Lost and Found</span>
+                        <span class="text-gray-500 text-lg">Web Application</span>
+                    </div>
+                </a>
+                <!-- Project 3 -->
+                <a href="https://github.com/Ayushpathak2004/weatherapp" target="_blank" class="project-link block py-10 border-b border-gray-800" data-image="https://placehold.co/600x400/ecfdf5/047857?text=Weather+App">
+                    <div class="flex justify-between items-center">
+                        <span class="text-3xl md:text-5xl font-bold">Weather App</span>
+                        <span class="text-gray-500 text-lg">API Integration</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
         <!-- Project Image Preview Container -->
         <div class="project-image-preview">
             <img id="project-preview-img" src="" alt="Project preview" onerror="this.onerror=null;this.src='https://placehold.co/600x400/111/fff?text=Image';">
@@ -266,128 +143,17 @@
         <footer id="contact" class="px-6 md:px-12 py-20 text-center border-t border-gray-800 fade-in-section">
             <h3 class="text-3xl md:text-4xl font-bold">Let's work together.</h3>
             <a href="mailto:pathakk09@gmail.com" class="mt-4 inline-block text-xl md:text-2xl gradient-text hover-target">pathakk09@gmail.com</a>
-            <div class="mt-12 flex justify-center space-x-8 text-gray-500">
-                <a href="https://github.com/Ayushpathak2004" target="_blank" class="hover-target hover:text-white transition-colors">GitHub</a>
-                <a href="https://www.linkedin.com/in/ayush-pathak-531564278/" target="_blank" class="hover-target hover:text-white transition-colors">LinkedIn</a>
+            <div class="mt-12 flex justify-center space-x-8">
+                <a href="https://github.com/Ayushpathak2004" target="_blank" class="text-gray-500 hover-target hover:text-white transition-colors">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/ayush-pathak-531564278/" target="_blank" class="text-gray-500 hover-target hover:text-white transition-colors">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
             </div>
         </footer>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cursor = document.querySelector('.cursor');
-            const hoverTargets = document.querySelectorAll('.hover-target, a, button');
-            const preloader = document.querySelector('.preloader');
-            const preloaderPercentage = document.getElementById('preloader-percentage');
-            const mainContent = document.getElementById('main-content');
-            const heroContent = document.getElementById('hero-content');
-
-            // --- Preloader Logic ---
-            let percentage = 0;
-            const interval = setInterval(() => {
-                percentage++;
-                if (preloaderPercentage) {
-                    preloaderPercentage.textContent = `${percentage}%`;
-                }
-                if (percentage >= 100) {
-                    clearInterval(interval);
-                    if (preloader) {
-                        preloader.style.opacity = '0';
-                        preloader.style.visibility = 'hidden';
-                    }
-                    if (mainContent) {
-                        mainContent.style.opacity = '1';
-                    }
-                    document.body.style.overflowY = 'auto'; // Restore scrollbars
-                }
-            }, 20); // Adjust timing for faster/slower loading
-
-            // --- Custom Cursor Logic ---
-            document.addEventListener('mousemove', e => {
-                if (cursor) {
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                }
-            });
-
-            hoverTargets.forEach(target => {
-                target.addEventListener('mouseenter', () => {
-                    cursor?.classList.add('grow');
-                });
-                target.addEventListener('mouseleave', () => {
-                    cursor?.classList.remove('grow');
-                });
-            });
-
-            // --- Project Hover Image Logic ---
-            const projectLinks = document.querySelectorAll('.project-link');
-            const imagePreview = document.querySelector('.project-image-preview');
-            const previewImg = document.getElementById('project-preview-img');
-
-            if (imagePreview && previewImg) {
-                document.addEventListener('mousemove', e => {
-                    imagePreview.style.left = e.clientX + 'px';
-                    imagePreview.style.top = e.clientY + 'px';
-                });
-
-                projectLinks.forEach(link => {
-                    link.addEventListener('mouseenter', () => {
-                        const imageUrl = link.getAttribute('data-image');
-                        if (imageUrl) {
-                            previewImg.src = imageUrl;
-                            imagePreview.style.opacity = '1';
-                            imagePreview.style.transform = 'translate(-50%, -50%) scale(1)';
-                        }
-                    });
-                    link.addEventListener('mouseleave', () => {
-                        imagePreview.style.opacity = '0';
-                        imagePreview.style.transform = 'translate(-50%, -50%) scale(0.8)';
-                    });
-                });
-            }
-
-            // --- Smooth Scrolling for Nav Links ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if(targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // --- Scroll-triggered Animations ---
-            const sections = document.querySelectorAll('.fade-in-section');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // --- Hero Parallax Effect ---
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (heroContent) {
-                    heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
-                }
-            });
-        });
-    </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
